@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import PasswordStrengthMeter from './components/PasswordStrengthMeter' ;
 
-function App() {
+const App = () => {
+  const [password, setPassword] = useState('') ;
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+        <div className="row justify-content-center mt-5 ">
+            <div className="col-md-6">
+                  <h4 className="text-center">Password Strength</h4>
+                  <div className="form-group pt-4">
+                      <input type="password"
+                       className="form-control py-3 my-2"
+                        placeholder="user password"
+                        onChange={ e => setPassword(e.target.value)}
+                        />
+                      <PasswordStrengthMeter password={password} />
+                  </div>
+                  
+            </div>
+        </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
